@@ -6,19 +6,12 @@ jobs:
         steps:
             - name: checkout repository
               uses: actions/checkout@v3
-            - name: install nodejs
-              uses: actions/setup-node@v3
-              with:
-                  node-version: '18'
             - name: Cache npm dependencies
               uses: actions/cache@v4
               with:
                   path: |
                     ~/.npm
-                    node_modules
                   key: ${{ runner.os }}-node-18-${{ hashFiles('**/package-lock.json') }}
-                  restore-keys: |
-                    ${{ runner.os }}-node-18-
             - name: install dependencies
               run: npm ci  
             - name: run lint
@@ -29,19 +22,13 @@ jobs:
         steps:
             - name: checkout repository
               uses: actions/checkout@v3
-            - name: install nodejs
-              uses: actions/setup-node@v3
-              with:
-                  node-version: '18'
             - name: Cache npm dependencies
               uses: actions/cache@v4
               with:
                   path: |
                     ~/.npm
-                    node_modules
+                    
                   key: ${{ runner.os }}-node-18-${{ hashFiles('**/package-lock.json') }}
-                  restore-keys: |
-                    ${{ runner.os }}-node-18-
             - name: install dependencies
               run: npm ci  
             - name: run tests
@@ -52,19 +39,12 @@ jobs:
         steps:
             - name: checkout repository
               uses: actions/checkout@v3
-            - name: install nodejs
-              uses: actions/setup-node@v3
-              with:
-                  node-version: '18'
             - name: Cache npm dependencies
               uses: actions/cache@v4
               with:
                   path: |
                     ~/.npm
-                    node_modules
                   key: ${{ runner.os }}-node-18-${{ hashFiles('**/package-lock.json') }}
-                  restore-keys: |
-                    ${{ runner.os }}-node-18-
             - name: install dependencies
               run: npm ci  
             - name: run build
