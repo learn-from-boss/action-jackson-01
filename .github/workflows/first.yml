@@ -10,8 +10,15 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: '18'
-                  cache: 'npm'
-                  cache-dependency-path: package-lock.json
+            - name: Cache npm dependencies
+              uses: actions/cache@v4
+              with:
+                  path: |
+                    ~/.npm
+                    node_modules
+                  key: ${{ runner.os }}-node-18-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                    ${{ runner.os }}-node-18-
             - name: install dependencies
               run: npm ci  
             - name: run lint
@@ -26,8 +33,15 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: '18'
-                  cache: 'npm'
-                  cache-dependency-path: package-lock.json
+            - name: Cache npm dependencies
+              uses: actions/cache@v4
+              with:
+                  path: |
+                    ~/.npm
+                    node_modules
+                  key: ${{ runner.os }}-node-18-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                    ${{ runner.os }}-node-18-
             - name: install dependencies
               run: npm ci  
             - name: run tests
@@ -42,8 +56,15 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: '18'
-                  cache: 'npm'
-                  cache-dependency-path: package-lock.json
+            - name: Cache npm dependencies
+              uses: actions/cache@v4
+              with:
+                  path: |
+                    ~/.npm
+                    node_modules
+                  key: ${{ runner.os }}-node-18-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                    ${{ runner.os }}-node-18-
             - name: install dependencies
               run: npm ci  
             - name: run build
